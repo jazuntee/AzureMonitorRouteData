@@ -1,0 +1,214 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "StorageAcctName": {
+            "metadata": {
+                "description": "Name of Blob Storage Account for Azure Monitor Data."
+            },
+            "type": "string",
+            "defaultValue": ""
+        },
+        "StorageAcctType": {
+            "metadata": {
+                "description": "Type of Blob Storage Account for Azure Monitor Data."
+            },
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_RAGRS"
+            ]
+        },
+        "EventHubNamespace": {
+            "metadata": {
+                "description": "Event Hub Namespace for Azure Monitor Data."
+            },
+            "type": "string",
+            "defaultValue": ""
+        },
+        "EventHubNames": {
+            "metadata": {
+                "description": "Names of Event Hubs for Azure Monitor Data."
+            },
+            "type": "array",
+            "defaultValue": [
+                "insights-operational-logs",
+                "insights-logs-diagnostics",
+                "insights-telemetry-lad",
+                "insights-metrics-pt1m",
+                "insights-telemetry-wad",
+                "insights-logs-auditlogs",
+                "insights-logs-signinlogs",
+                "insights-logs-alert"
+            ]
+        },
+        "EventHubConsumerGroupNames": {
+            "metadata": {
+                "description": "Consumer Group Names for Event Hubs."
+            },
+            "type": "array",
+            "defaultValue": []
+        },
+        "LogAnalyticsWorkspaceName": {
+            "metadata": {
+                "description": "Name of Log Analytics Workspace for Azure Monitor Data."
+            },
+            "type": "string",
+            "defaultValue": ""
+        },
+        "LogAnalyticsDataRetentionInDays": {
+            "metadata": {
+                "description": "Number of Days to Retain Data in Log Analytics Workspace for Azure Monitor Data."
+            },
+            "type": "int",
+            "defaultValue": 365
+        }
+    },
+    "variables": {
+        "Location": "[resourceGroup().location]",
+        "StorageAcctName": "[toLower(parameters('StorageAcctName'))]",
+        "EventHubNamespace": "[if(empty(parameters('EventHubNamespace')),'NoEventHubNamespaceSpecified',parameters('EventHubNamespace'))]",
+        "EventHubNames": "[if(empty(parameters('EventHubNames')),array('NoEventHubNamesSpecified'),parameters('EventHubNames'))]",
+        "EventHubConsumerGroupNames": "[if(empty(parameters('EventHubConsumerGroupNames')),array('NoEventHubConsumerGroupNamesSpecified'),parameters('EventHubConsumerGroupNames'))]",
+        "EventHubAuthorizationRules": [
+            {
+                "name": "RootManageSharedAccessKey",
+                "rights": [
+                    "Manage",
+                    "Send",
+                    "Listen"
+                ]
+            },
+            {
+                "name": "RootSendListenSharedAccessKey",
+                "rights": [
+                    "Send",
+                    "Listen"
+                ]
+            },
+            {
+                "name": "RootSendSharedAccessKey",
+                "rights": [
+                    "Send"
+                ]
+            },
+            {
+                "name": "RootListenSharedAccessKey",
+                "rights": [
+                    "Listen"
+                ]
+            }
+        ]
+    },
+    "resources": [
+        {
+            "condition": "[not(empty(parameters('StorageAcctName')))]",
+            "name": "[if(empty(variables('StorageAcctName')),'NoStorageAcctNameSpecified',variables('StorageAcctName'))]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2018-07-01",
+            "location": "[variables('Location')]",
+            "tags": {
+                "displayName": "Storage Account"
+            },
+            "sku": {
+                "name": "[parameters('StorageAcctType')]"
+            },
+            "kind": "BlobStorage",
+            "properties": {
+                "supportsHttpsTrafficOnly": true,
+                "encryption": {
+                    "services": {
+                        "blob": {
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                },
+                "accessTier": "Cool"
+            }
+        },
+        {
+            "condition": "[not(empty(parameters('EventHubNamespace')))]",
+            "name": "[variables('EventHubNamespace')]",
+            "type": "Microsoft.EventHub/namespaces",
+            "sku": {
+                "name": "Standard",
+                "tier": "Standard",
+                "capacity": 1
+            },
+            "apiVersion": "2017-04-01",
+            "location": "[variables('Location')]",
+            "tags": {
+                "displayName": "Event Hub Namespace"
+            }
+        },
+        {
+            "copy": {
+                "name": "copyAuthorizationRules",
+                "count": "[length(variables('EventHubAuthorizationRules'))]"
+            },
+            "condition": "[not(or(empty(parameters('EventHubNamespace')),empty(variables('EventHubAuthorizationRules'))))]",
+            "name": "[concat(variables('EventHubNamespace'), '/', variables('EventHubAuthorizationRules')[copyindex()].name)]",
+            "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+            "apiVersion": "2017-04-01",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', variables('EventHubNamespace'))]"
+            ],
+            "properties": {
+                "rights": "[variables('EventHubAuthorizationRules')[copyindex()].rights]"
+            }
+        },
+        {
+            "copy": {
+                "name": "copyEventHub",
+                "count": "[length(variables('EventHubNames'))]"
+            },
+            "condition": "[not(or(empty(parameters('EventHubNamespace')),empty(parameters('EventHubNames'))))]",
+            "name": "[concat(variables('EventHubNamespace'), '/', variables('EventHubNames')[copyIndex()])]",
+            "type": "Microsoft.EventHub/namespaces/eventhubs",
+            "apiVersion": "2017-04-01",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', variables('EventHubNamespace'))]"
+            ],
+            "properties": {
+                "messageRetentionInDays": 7,
+                "partitionCount": 4,
+                "status": "Active"
+            }
+        },
+        {
+            "copy": {
+                "name": "copyEventHubConsumerGroup",
+                "count": "[mul(length(variables('EventHubNames')),length(variables('EventHubConsumerGroupNames')))]"
+            },
+            "condition": "[not(or(empty(parameters('EventHubNamespace')),or(empty(parameters('EventHubNames')),empty(parameters('EventHubConsumerGroupNames')))))]",
+            "name": "[concat(variables('EventHubNamespace'), '/', variables('EventHubNames')[div(copyIndex(),length(variables('EventHubConsumerGroupNames')))], '/', variables('EventHubConsumerGroupNames')[mod(copyIndex(),length(variables('EventHubConsumerGroupNames')))])]",
+            "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+            "apiVersion": "2017-04-01",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', variables('EventHubNamespace'))]",
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('EventHubNamespace'), variables('EventHubNames')[div(copyIndex(),length(variables('EventHubConsumerGroupNames')))])]"
+            ]
+        },
+        {
+            "condition": "[not(empty(parameters('LogAnalyticsWorkspaceName')))]",
+            "name": "[if(empty(parameters('LogAnalyticsWorkspaceName')),'NoLogAnalyticsWorkspaceNameSpecified',parameters('LogAnalyticsWorkspaceName'))]",
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "apiVersion": "2015-11-01-preview",
+            "location": "eastus",
+            "tags": {
+                "displayName": "Log Analytics Workspace"
+            },
+            "properties": {
+                "sku": {
+                    "name": "PerGB2018"
+                },
+                "retentionInDays": "[parameters('LogAnalyticsDataRetentionInDays')]"
+            }
+        }
+    ],
+    "outputs": {
+    }
+}
