@@ -49,7 +49,7 @@
     }
   },
   "variables": {
-    "packageFileUri": "[uri(deployment().templateLink.uri, '../build/ManagedApplication.zip')]"
+    "packageFileUri": "[uri(deployment().templateLink.uri, 'build/ManagedApplication.zip')]"
   },
   "resources": [
     {
