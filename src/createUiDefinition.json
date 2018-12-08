@@ -22,10 +22,7 @@
                             "type": "Standard_LRS"
                         },
                         "constraints": {
-                            "allowedTypes": [
-                                "Standard_LRS",
-                                "Standard_GRS",
-                                "Standard_RAGRS",
+                            "excludedTypes": [
                                 "Premium_LRS"
                             ]
                           }
