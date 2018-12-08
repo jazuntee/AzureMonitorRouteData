@@ -1,0 +1,76 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+    "handler": "Microsoft.Compute.MultiVm",
+    "version": "0.1.2-preview",
+    "parameters": {
+        "basics": [],
+        "steps": [
+            {
+                "name": "AzureMonitor",
+                "label": "Azure Monitor",
+                "subLabel": {
+                    "preValidation": "Select or create resources",
+                    "postValidation": "Done"
+                },
+                "bladeTitle": "Route Data",
+                "elements": [
+                    // {
+                    //     "name": "StorageAcctSelector",
+                    //     "type": "Microsoft.Storage.StorageAccountSelector",
+                    //     "label": "Storage Account",
+                    //     "defaultValue": {
+                    //         "type": "Standard_LRS"
+                    //     },
+                    //     "constraints": {
+                    //         "excludedTypes": [
+                    //             "Premium_LRS"
+                    //         ]
+                    //       }
+                    // },
+                    {
+                        "name": "EventHub",
+                        "type": "Microsoft.Common.TextBox",
+                        "label": "Event Hub Namespace",
+                        "defaultValue": "",
+                        "toolTip": "Use only allowed characters",
+                        "constraints": {
+                            "required": false,
+                            "regex": "^[a-zA-Z0-9]{3,24}$",
+                            "validationMessage": "Only alphanumeric characters are allowed, and the value must be 3-24 characters long."
+                        }
+                    },
+                    {
+                        "name": "EventHub",
+                        "type": "Microsoft.Common.TextBox",
+                        "label": "Event Hub Namespace",
+                        "defaultValue": "",
+                        "toolTip": "Use only allowed characters",
+                        "constraints": {
+                            "required": false,
+                            "regex": "^[a-zA-Z0-9]{3,24}$",
+                            "validationMessage": "Only alphanumeric characters are allowed, and the value must be 3-24 characters long."
+                        }
+                    },
+                    {
+                        "name": "LogAnalytics",
+                        "type": "Microsoft.Common.TextBox",
+                        "label": "Log Analytics Workspace",
+                        "defaultValue": "",
+                        "toolTip": "Use only allowed characters",
+                        "constraints": {
+                            "required": false,
+                            "regex": "^[a-z0-9A-Z]{1,30}$",
+                            "validationMessage": "Only alphanumeric characters are allowed, and the value must be 1-30 characters long."
+                        }
+                    }
+                ]
+            }
+        ],
+        "outputs": {
+            "StorageAcctName": "[steps('AzureMonitor').StorageAcctSelector.name]",
+            "storageAccountType": "[steps('AzureMonitor').StorageAcctSelector.type]",
+            "EventHubNamespace": "[steps('AzureMonitor').EventHub]",
+            "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalytics]"
+        }
+    }
+}
