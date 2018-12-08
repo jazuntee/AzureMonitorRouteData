@@ -13,6 +13,7 @@
                     "postValidation": "Done"
                 },
                 "bladeTitle": "Route Data",
+                "bladeSubtitle": "Azure Monitor",
                 "elements": [
                     {
                         "name": "StorageAcctName",
@@ -29,7 +30,7 @@
                         "name": "StorageAcctType",
                         "type": "Microsoft.Common.DropDown",
                         "label": "Storage Account Type",
-                        "defaultValue": "Zone-redundant storage (ZRS)",
+                        "defaultValue": "Locally-redundant storage (LRS)",
                         "constraints": {
                             "allowedValues": [
                                 {
