@@ -29,7 +29,7 @@
                         "name": "StorageAcctType",
                         "type": "Microsoft.Common.DropDown",
                         "label": "Storage Account Type",
-                        "defaultValue": "Standard_ZRS",
+                        "defaultValue": "Zone-redundant storage (ZRS)",
                         "constraints": {
                             "allowedValues": [
                                 {
@@ -79,6 +79,7 @@
         ],
         "outputs": {
             "StorageAcctName": "[steps('AzureMonitor').StorageAcctName]",
+            "StorageAcctType": "[steps('AzureMonitor').StorageAcctType]",
             "EventHubNamespace": "[steps('AzureMonitor').EventHubNamespace]",
             "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalyticsWorkspaceName]"
         }
