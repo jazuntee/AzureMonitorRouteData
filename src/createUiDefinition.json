@@ -9,7 +9,7 @@
                 "name": "AzureMonitor",
                 "label": "Azure Monitor",
                 "subLabel": {
-                    "preValidation": "Select or create resources",
+                    "preValidation": "Enter desired resources",
                     "postValidation": "Done"
                 },
                 "bladeTitle": "Route Data",
@@ -18,8 +18,7 @@
                         "name": "StorageAcctName",
                         "type": "Microsoft.Common.TextBox",
                         "label": "Storage Account Name",
-                        "defaultValue": "",
-                        "toolTip": "Use only allowed characters",
+                        "toolTip": "Archive to a storage account",
                         "constraints": {
                             "required": false,
                             "regex": "^[a-z0-9]{3,24}$",
@@ -57,8 +56,7 @@
                         "name": "EventHub",
                         "type": "Microsoft.Common.TextBox",
                         "label": "Event Hub Namespace",
-                        "defaultValue": "",
-                        "toolTip": "Use only allowed characters",
+                        "toolTip": "Stream to an event hub",
                         "constraints": {
                             "required": false,
                             "regex": "^[a-zA-Z][a-zA-Z0-9-]{4,48}[a-zA-Z0-9]$",
@@ -69,8 +67,7 @@
                         "name": "LogAnalytics",
                         "type": "Microsoft.Common.TextBox",
                         "label": "Log Analytics Workspace Name",
-                        "defaultValue": "",
-                        "toolTip": "Use only allowed characters",
+                        "toolTip": "Send to Log Analytics",
                         "constraints": {
                             "required": false,
                             "regex": "^[a-zA-Z0-9][a-zA-Z0-9-]{2,61}[a-zA-Z0-9]$",
@@ -82,7 +79,7 @@
         ],
         "outputs": {
             "StorageAcctName": "[steps('AzureMonitor').StorageAcctSelector.name]",
-            "storageAccountType": "[steps('AzureMonitor').StorageAcctSelector.type]",
+            "StorageAccountType": "[steps('AzureMonitor').StorageAcctSelector.type]",
             "EventHubNamespace": "[steps('AzureMonitor').EventHub]",
             "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalytics]"
         }
