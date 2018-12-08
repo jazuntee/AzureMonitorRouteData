@@ -4,7 +4,7 @@
   "parameters": {
     "name": {
       "type": "string",
-      "defaultValue": "ManagedStorageAccount",
+      "defaultValue": "AzureMonitorRouteData1",
       "metadata": {
         "description": "Provide a name for the managed application."
       }
@@ -21,7 +21,7 @@
         "ReadOnly",
         "CanNotDelete"
       ],
-      "defaultValue": "ReadOnly",
+      "defaultValue": "CanNotDelete",
       "metadata": {
         "description": "Specify the resource lock being used for the managed application"
       }
@@ -30,18 +30,19 @@
       "type": "array",
       "metadata": {
         "description": "Provide the authorization mapping for the managed application."
-      }
+      },
+      "defaultValue": []
     },
     "description": {
       "type": "string",
-      "defaultValue": "Managed Azure Storage Account",
+      "defaultValue": "Create resources for storing Azure Monitor data.",
       "metadata": {
         "description": "Provide a brief description of the managed application"
       }
     },
     "displayName": {
       "type": "string",
-      "defaultValue": "Managed Storage Account",
+      "defaultValue": "Azure Monitor Route Data 1",
       "metadata": {
         "description": "Display name for the managed application"
       }
