@@ -53,7 +53,7 @@
                         }
                     },
                     {
-                        "name": "EventHub",
+                        "name": "EventHubNamespace",
                         "type": "Microsoft.Common.TextBox",
                         "label": "Event Hub Namespace",
                         "toolTip": "Stream to an event hub",
@@ -64,7 +64,7 @@
                         }
                     },
                     {
-                        "name": "LogAnalytics",
+                        "name": "LogAnalyticsWorkspaceName",
                         "type": "Microsoft.Common.TextBox",
                         "label": "Log Analytics Workspace Name",
                         "toolTip": "Send to Log Analytics",
@@ -78,10 +78,10 @@
             }
         ],
         "outputs": {
-            "StorageAcctName": "[steps('AzureMonitor').StorageAcctSelector.name]",
-            "StorageAcctType": "[steps('AzureMonitor').StorageAcctSelector.type]",
-            "EventHubNamespace": "[steps('AzureMonitor').EventHub]",
-            "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalytics]"
+            "StorageAcctName": "[steps('AzureMonitor').StorageAcctName]",
+            "StorageAcctType": "[steps('AzureMonitor').StorageAcctType]",
+            "EventHubNamespace": "[steps('AzureMonitor').EventHubNamespace]",
+            "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalyticsWorkspaceName]"
         }
     }
 }
