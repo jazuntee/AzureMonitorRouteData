@@ -20,7 +20,15 @@
                         "label": "Storage Account",
                         "defaultValue": {
                             "type": "Standard_LRS"
-                        }
+                        },
+                        "constraints": {
+                            "allowedTypes": [
+                                "Standard_LRS",
+                                "Standard_GRS",
+                                "Standard_RAGRS",
+                                "Premium_LRS"
+                            ]
+                          }
                     },
                     {
                         "name": "EventHub",
