@@ -12,7 +12,7 @@
                     "preValidation": "Enter desired resources",
                     "postValidation": "Done"
                 },
-                "bladeTitle": "Route Data",
+                "bladeTitle": "Route Data 2",
                 "elements": [
                     {
                         "name": "StorageAcctName",
