@@ -78,10 +78,6 @@
             }
         ],
         "outputs": {
-            "StorageAcctName": "[steps('AzureMonitor').StorageAcctName]",
-            "StorageAcctType": "[steps('AzureMonitor').StorageAcctType]",
-            "EventHubNamespace": "[steps('AzureMonitor').EventHubNamespace]",
-            "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalyticsWorkspaceName]"
         }
     }
 }
