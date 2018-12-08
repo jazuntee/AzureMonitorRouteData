@@ -19,9 +19,9 @@
       "type": "string",
       "allowedValues": [
         "ReadOnly",
-        "CanNotDelete"
+        "None"
       ],
-      "defaultValue": "CanNotDelete",
+      "defaultValue": "None",
       "metadata": {
         "description": "Specify the resource lock being used for the managed application"
       }
