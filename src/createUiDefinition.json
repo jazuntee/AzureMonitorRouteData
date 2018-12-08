@@ -12,7 +12,7 @@
                     "preValidation": "Enter desired resources",
                     "postValidation": "Done"
                 },
-                "bladeTitle": "Route Data 2",
+                "bladeTitle": "Route Data",
                 "elements": [
                     {
                         "name": "StorageAcctName",
@@ -23,6 +23,33 @@
                             "required": false,
                             "regex": "^[a-z0-9]{3,24}$",
                             "validationMessage": "The value must be between 3 and 24 characters long and contain only lowercase letters and numbers."
+                        }
+                    },
+                    {
+                        "name": "StorageAcctType",
+                        "type": "Microsoft.Common.DropDown",
+                        "label": "Storage Account Type",
+                        "defaultValue": "Standard_ZRS",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Locally-redundant storage (LRS)",
+                                    "value": "Standard_LRS"
+                                },
+                                {
+                                    "label": "Zone-redundant storage (ZRS)",
+                                    "value": "Standard_ZRS"
+                                },
+                                {
+                                    "label": "Geo-redundant storage (GRS)",
+                                    "value": "Standard_GRS"
+                                },
+                                {
+                                    "label": "Read-access geo-redundant storage (RA-GRS)",
+                                    "value": "Standard_RAGRS"
+                                }
+                            ],
+                            "required": false
                         }
                     },
                     {
