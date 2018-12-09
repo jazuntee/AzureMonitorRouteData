@@ -7,7 +7,9 @@
                 "description": "Name of Blob Storage Account for Azure Monitor Data."
             },
             "type": "string",
-            "defaultValue": ""
+            "defaultValue": "",
+            "minLength": 3,
+            "maxLength": 24
         },
         "StorageAcctType": {
             "metadata": {
@@ -17,6 +19,7 @@
             "defaultValue": "Standard_LRS",
             "allowedValues": [
                 "Standard_LRS",
+                "Standard_ZRS",
                 "Standard_GRS",
                 "Standard_RAGRS"
             ]
@@ -26,7 +29,9 @@
                 "description": "Event Hub Namespace for Azure Monitor Data."
             },
             "type": "string",
-            "defaultValue": ""
+            "defaultValue": "",
+            "minLength": 6,
+            "maxLength": 50
         },
         "EventHubNames": {
             "metadata": {
@@ -56,7 +61,9 @@
                 "description": "Name of Log Analytics Workspace for Azure Monitor Data."
             },
             "type": "string",
-            "defaultValue": ""
+            "defaultValue": "",
+            "minLength": 4,
+            "maxLength": 63
         },
         "LogAnalyticsDataRetentionInDays": {
             "metadata": {
@@ -170,7 +177,8 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs",
             "apiVersion": "2017-04-01",
             "dependsOn": [
-                "[resourceId('Microsoft.EventHub/namespaces', variables('EventHubNamespace'))]"
+                "[resourceId('Microsoft.EventHub/namespaces', variables('EventHubNamespace'))]",
+                "copyAuthorizationRules"
             ],
             "properties": {
                 "messageRetentionInDays": 7,
@@ -188,7 +196,6 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2017-04-01",
             "dependsOn": [
-                "[resourceId('Microsoft.EventHub/namespaces', variables('EventHubNamespace'))]",
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('EventHubNamespace'), variables('EventHubNames')[div(copyIndex(),length(variables('EventHubConsumerGroupNames')))])]"
             ]
         },
