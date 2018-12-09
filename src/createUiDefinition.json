@@ -80,7 +80,6 @@
                         "type": "Microsoft.Common.TextBox",
                         "label": "Event Hub Consumer Groups",
                         "toolTip": "Specify an array of event hub consumer groups",
-                        "defaultValue": "[[]",
                         "constraints": {
                             "required": false,
                             "regex": "^\\[(?:\"[^\"]*\"(?:,\"[^\"]*\")*)?\\]$",
