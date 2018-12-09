@@ -178,7 +178,8 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs",
             "apiVersion": "2017-04-01",
             "dependsOn": [
-                "[resourceId('Microsoft.EventHub/namespaces', variables('EventHubNamespace'))]"
+                "[resourceId('Microsoft.EventHub/namespaces', variables('EventHubNamespace'))]",
+                "copyAuthorizationRules"
             ],
             "properties": {
                 "messageRetentionInDays": 7,
