@@ -70,7 +70,7 @@
                         "toolTip": "Specify an array of event hub names",
                         "constraints": {
                             "required": false,
-                            "regex": "^(?:\\[(?:\"[^\"]*\"(?:,\"[^\"]*\")*)?\\])?$",
+                            "regex": "^\\[(?:\"[^\"]*\"(?:,\"[^\"]*\")*)?\\]$",
                             "validationMessage": "Array should be in the format [\"element1\",\"element2\",\"elementn\"]."
                         }
                     },
@@ -81,7 +81,7 @@
                         "toolTip": "Specify an array of event hub consumer groups",
                         "constraints": {
                             "required": false,
-                            "regex": "^(?:\\[(?:\"[^\"]*\"(?:,\"[^\"]*\")*)?\\])?$",
+                            "regex": "^\\[(?:\"[^\"]*\"(?:,\"[^\"]*\")*)?\\]$",
                             "validationMessage": "Array should be in the format [\"element1\",\"element2\",\"elementn\"]."
                         }
                     },
@@ -90,7 +90,7 @@
                         "type": "Microsoft.Common.TextBox",
                         "label": "Log Analytics Workspace Name",
                         "toolTip": "Send to Log Analytics",
-                        "defaultValue": "update1",
+                        "defaultValue": "update2",
                         "constraints": {
                             "required": false,
                             "regex": "^[a-zA-Z0-9][a-zA-Z0-9-]{2,61}[a-zA-Z0-9]$",
@@ -115,8 +115,8 @@
             "StorageAcctName": "[steps('AzureMonitor').StorageAcctName]",
             "StorageAcctType": "[steps('AzureMonitor').StorageAcctType]",
             "EventHubNamespace": "[steps('AzureMonitor').EventHubNamespace]",
-            "EventHubNames": "[parse(coalesce(steps('AzureMonitor').EventHubNames,'[]'))]",
-            "EventHubConsumerGroupNames": "[parse(coalesce(steps('AzureMonitor').EventHubConsumerGroupNames,'[]'))]",
+            "EventHubNames": "[parse(steps('AzureMonitor').EventHubNames)]",
+            "EventHubConsumerGroupNames": "[parse(steps('AzureMonitor').EventHubConsumerGroupNames)]",
             "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalyticsWorkspaceName]"
         }
     }
