@@ -107,8 +107,7 @@
             "EventHubNamespace": "[steps('AzureMonitor').EventHubNamespace]",
             "EventHubNames": "[parse(steps('AzureMonitor').EventHubNames)]",
             "EventHubConsumerGroupNames": "[parse(steps('AzureMonitor').EventHubConsumerGroupNames)]",
-            "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalyticsWorkspaceName]",
-            "LogAnalyticsDataRetentionInDays": "[parse(steps('AzureMonitor').LogAnalyticsDataRetentionInDays)]"
+            "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalyticsWorkspaceName]"
         }
     }
 }
