@@ -118,7 +118,7 @@
             "EventHubNames": "[parse(coalesce(steps('AzureMonitor').EventHubNames,'[]'))]",
             "EventHubConsumerGroupNames": "[parse(coalesce(steps('AzureMonitor').EventHubConsumerGroupNames,'[]'))]",
             "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalyticsWorkspaceName]",
-            "LogAnalyticsDataRetentionInDays": "[parse(steps('AzureMonitor').LogAnalyticsDataRetentionInDays)]"
+            "LogAnalyticsDataRetentionInDays": "[parse(coalesce(steps('AzureMonitor').LogAnalyticsDataRetentionInDays),30)]"
         }
     }
 }
