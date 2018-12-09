@@ -168,7 +168,7 @@
         },
         {
             "copy": {
-                "name": "copyEventHub2",
+                "name": "copyEventHub",
                 "count": "[length(variables('EventHubNames'))]",
                 "mode": "Serial",
                 "batchSize": 1
@@ -199,7 +199,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2017-04-01",
             "dependsOn": [
-                "copyEventHub2"
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('EventHubNamespace'), variables('EventHubNames')[div(copyIndex(),length(variables('EventHubConsumerGroupNames')))])]"
             ]
         },
         {
