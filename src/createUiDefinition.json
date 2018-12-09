@@ -69,6 +69,7 @@
                         "type": "Microsoft.Common.TextBox",
                         "label": "Event Hub Names",
                         "toolTip": "Specify an array of event hub names",
+                        "defaultValue": "[]",
                         "constraints": {
                             "required": false
                         }
@@ -97,11 +98,8 @@
                         "name": "LogAnalyticsDataRetentionInDays",
                         "type": "Microsoft.Common.TextBox",
                         "label": "LogAnalytics Data Retention In Days",
-                        "defaultValue": "356",
                         "constraints": {
-                            "required": false,
-                            "regex": "^([3-9][0-9]|[1-6][0-9][0-9]|7[0-2][0-9]|730)$",
-                            "validationMessage": "The value must be between 30 and 730."
+                            "required": false
                         }
                     }
                 ]
