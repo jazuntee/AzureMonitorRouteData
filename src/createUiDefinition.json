@@ -13,7 +13,6 @@
                     "postValidation": "Done"
                 },
                 "bladeTitle": "Route Data",
-                "bladeSubtitle": "Azure Monitor",
                 "elements": [
                     {
                         "name": "StorageAcctName",
