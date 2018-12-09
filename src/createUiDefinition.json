@@ -62,7 +62,7 @@
                     {
                         "name": "EventHub",
                         "type": "Microsoft.Common.Section",
-                        "label": "Stream to event hub",
+                        "label": "Stream to Event Hub",
                         "elements": [
                             {
                                 "name": "EventHubNamespace",
@@ -120,7 +120,6 @@
                                 "name": "LogAnalyticsDataRetentionInDays",
                                 "type": "Microsoft.Common.TextBox",
                                 "label": "LogAnalytics Data Retention In Days",
-                                "defaultValue": "356",
                                 "constraints": {
                                     "required": false,
                                     "regex": "^([3-9][0-9]|[1-6][0-9][0-9]|7[0-2][0-9]|730)$",
@@ -139,7 +138,7 @@
             "EventHubNames": "[parse(coalesce(steps('AzureMonitor').EventHub.EventHubNames,'[]'))]",
             "EventHubConsumerGroupNames": "[parse(coalesce(steps('AzureMonitor').EventHub.EventHubConsumerGroupNames,'[]'))]",
             "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalytics.LogAnalyticsWorkspaceName]",
-            "LogAnalyticsDataRetentionInDays": "[int(coalesce(steps('AzureMonitor').LogAnalytics.LogAnalyticsDataRetentionInDays,30))]"
+            "LogAnalyticsDataRetentionInDays": "[int(coalesce(steps('AzureMonitor').LogAnalytics.LogAnalyticsDataRetentionInDays,'30'))]"
         }
     }
 }
