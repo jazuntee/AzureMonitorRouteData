@@ -69,6 +69,7 @@
                         "type": "Microsoft.Common.TextBox",
                         "label": "Event Hub Names",
                         "toolTip": "Specify an array of event hub names",
+                        "defaultValue": "qwer",
                         "constraints": {
                             "required": false
                         }
@@ -91,14 +92,6 @@
                             "required": false,
                             "regex": "^[a-zA-Z0-9][a-zA-Z0-9-]{2,61}[a-zA-Z0-9]$",
                             "validationMessage": "The value must be between 4 and 63 characters long and contain only letters, numbers, and hyphens. The value must not start or end with a hyphen."
-                        }
-                    },
-                    {
-                        "name": "LogAnalyticsDataRetentionInDays",
-                        "type": "Microsoft.Common.TextBox",
-                        "label": "Log Analytics Data Retention In Days",
-                        "constraints": {
-                            "required": false
                         }
                     }
                 ]
