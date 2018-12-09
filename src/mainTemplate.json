@@ -189,7 +189,9 @@
         {
             "copy": {
                 "name": "copyEventHubConsumerGroup",
-                "count": "[mul(length(variables('EventHubNames')),length(variables('EventHubConsumerGroupNames')))]"
+                "count": "[mul(length(variables('EventHubNames')),length(variables('EventHubConsumerGroupNames')))]",
+                "mode": "Serial",
+                "batchSize": 1
             },
             "condition": "[not(or(empty(parameters('EventHubNamespace')),or(empty(parameters('EventHubNames')),empty(parameters('EventHubConsumerGroupNames')))))]",
             "name": "[concat(variables('EventHubNamespace'), '/', variables('EventHubNames')[div(copyIndex(),length(variables('EventHubConsumerGroupNames')))], '/', variables('EventHubConsumerGroupNames')[mod(copyIndex(),length(variables('EventHubConsumerGroupNames')))])]",
