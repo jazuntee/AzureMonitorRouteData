@@ -197,8 +197,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2017-04-01",
             "dependsOn": [
-                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('EventHubNamespace'), variables('EventHubNames')[div(copyIndex(),length(variables('EventHubConsumerGroupNames')))])]",
-                "copyEventHub"
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('EventHubNamespace'), variables('EventHubNames')[div(copyIndex(),length(variables('EventHubConsumerGroupNames')))])]"
             ]
         },
         {
