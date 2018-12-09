@@ -69,6 +69,7 @@
                         "type": "Microsoft.Common.TextBox",
                         "label": "Event Hub Names",
                         "toolTip": "Specify an array of event hub names",
+                        "defaultValue": "[\"insights-operational-logs\",\"insights-logs-diagnostics\",\"insights-telemetry-lad\",\"insights-metrics-pt1m\",\"insights-telemetry-wad\",\"insights-logs-auditlogs\",\"insights-logs-signinlogs\",\"insights-logs-alert\"]",
                         "constraints": {
                             "required": false
                         }
