@@ -69,6 +69,7 @@
                         "type": "Microsoft.Common.TextBox",
                         "label": "Event Hub Names",
                         "toolTip": "Specify an array of event hub names",
+                        "defaultValue": "[]",
                         "constraints": {
                             "required": false
                         }
