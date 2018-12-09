@@ -76,7 +76,7 @@
                         }
                     },
                     {
-                        "name": "EventHubConsumerGroups",
+                        "name": "EventHubConsumerGroupNames",
                         "type": "Microsoft.Common.TextBox",
                         "label": "Event Hub Consumer Groups",
                         "toolTip": "Specify an array of event hub consumer groups",
@@ -105,7 +105,7 @@
             "StorageAcctType": "[steps('AzureMonitor').StorageAcctType]",
             "EventHubNamespace": "[steps('AzureMonitor').EventHubNamespace]",
             "EventHubNames": "[steps('AzureMonitor').EventHubNames]",
-            "EventHubConsumerGroups": "[steps('AzureMonitor').EventHubConsumerGroups]",
+            "EventHubConsumerGroups": "[steps('AzureMonitor').EventHubConsumerGroupNames]",
             "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalyticsWorkspaceName]"
         }
     }
