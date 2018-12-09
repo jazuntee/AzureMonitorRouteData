@@ -104,8 +104,8 @@
             "StorageAcctName": "[steps('AzureMonitor').StorageAcctName]",
             "StorageAcctType": "[steps('AzureMonitor').StorageAcctType]",
             "EventHubNamespace": "[steps('AzureMonitor').EventHubNamespace]",
-            "EventHubNames": "[steps('AzureMonitor').EventHubNames]",
-            "EventHubConsumerGroupNames": "[steps('AzureMonitor').EventHubConsumerGroupNames]",
+            "EventHubNames": "[parse(steps('AzureMonitor').EventHubNames)]",
+            "EventHubConsumerGroupNames": "[parse(steps('AzureMonitor').EventHubConsumerGroupNames)]",
             "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalyticsWorkspaceName]"
         }
     }
