@@ -68,7 +68,7 @@
                         "type": "Microsoft.Common.TextBox",
                         "label": "Event Hub Names",
                         "toolTip": "Specify an array of event hub names",
-                        "defaultValue": "qwer5",
+                        "defaultValue": "qwer6",
                         "constraints": {
                             "required": false,
                             "regex": "^(?:\\[(?:\"[^\"]*\"(?:,\"[^\"]*\")*)?\\])?$",
@@ -96,6 +96,17 @@
                             "regex": "^[a-zA-Z0-9][a-zA-Z0-9-]{2,61}[a-zA-Z0-9]$",
                             "validationMessage": "The value must be between 4 and 63 characters long and contain only letters, numbers, and hyphens. The value must not start or end with a hyphen."
                         }
+                    },
+                    {
+                        "name": "LogAnalyticsDataRetentionInDays",
+                        "type": "Microsoft.Common.TextBox",
+                        "label": "LogAnalytics Data Retention In Days",
+                        "defaultValue": "356",
+                        "constraints": {
+                            "required": false,
+                            "regex": "^([3-9][0-9]|[1-6][0-9][0-9]|7[0-2][0-9]|730)$",
+                            "validationMessage": "The value must be between 30 and 730."
+                        }
                     }
                 ]
             }
@@ -104,7 +115,7 @@
             "StorageAcctName": "[steps('AzureMonitor').StorageAcctName]",
             "StorageAcctType": "[steps('AzureMonitor').StorageAcctType]",
             "EventHubNamespace": "[steps('AzureMonitor').EventHubNamespace]",
-            "EventHubNames": "[parse(coalesce(steps('AzureMonitor').EventHubNames),'[]'))]",
+            "EventHubNames": "[parse(coalesce(steps('AzureMonitor').EventHubNames,'[]'))]",
             "EventHubConsumerGroupNames": "[parse(coalesce(steps('AzureMonitor').EventHubConsumerGroupNames,'[]'))]",
             "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalyticsWorkspaceName]"
         }
