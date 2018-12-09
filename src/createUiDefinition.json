@@ -69,11 +69,8 @@
                         "type": "Microsoft.Common.TextBox",
                         "label": "Event Hub Names",
                         "toolTip": "Specify an array of event hub names",
-                        "defaultValue": "asdf",
                         "constraints": {
-                            "required": false,
-                            "regex": "^(?:\\[(?:\"[^\"]*\"(?:,\"[^\"]*\")*)?\\])?$",
-                            "validationMessage": "Array should be in the format [\"element1\",\"element2\",\"elementn\"]."
+                            "required": false
                         }
                     },
                     {
@@ -82,9 +79,7 @@
                         "label": "Event Hub Consumer Groups",
                         "toolTip": "Specify an array of event hub consumer groups",
                         "constraints": {
-                            "required": false,
-                            "regex": "^(?:\\[(?:\"[^\"]*\"(?:,\"[^\"]*\")*)?\\])?$",
-                            "validationMessage": "Array should be in the format [\"element1\",\"element2\",\"elementn\"]."
+                            "required": false
                         }
                     },
                     {
