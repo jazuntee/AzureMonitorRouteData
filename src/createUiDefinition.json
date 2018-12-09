@@ -68,7 +68,7 @@
                         "type": "Microsoft.Common.TextBox",
                         "label": "Event Hub Names",
                         "toolTip": "Specify an array of event hub names",
-                        "defaultValue": "[concat('[', string('test1'), ',', string('test2'))]",
+                        "defaultValue": "[concat('[[', string('test1'), ',', string('test2'))]",
                         "constraints": {
                             "required": false,
                             "regex": "^\\[(?:\"[^\"]*\"(?:,\"[^\"]*\")*)?\\]$",
