@@ -154,7 +154,9 @@
         {
             "copy": {
                 "name": "copyAuthorizationRules",
-                "count": "[length(variables('EventHubAuthorizationRules'))]"
+                "count": "[length(variables('EventHubAuthorizationRules'))]",
+                "mode": "Serial",
+                "batchSize": 1
             },
             "condition": "[not(or(empty(parameters('EventHubNamespace')),empty(variables('EventHubAuthorizationRules'))))]",
             "name": "[concat(variables('EventHubNamespace'), '/', variables('EventHubAuthorizationRules')[copyindex()].name)]",
