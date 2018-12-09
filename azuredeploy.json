@@ -9,12 +9,6 @@
         "description": "Provide a name for the managed application."
       }
     },
-    "location": {
-      "type": "string",
-      "metadata": {
-        "description": "Specify the Azure region to place the application definition."
-      }
-    },
     "lockLevel": {
       "type": "string",
       "allowedValues": [
@@ -49,13 +43,14 @@
     }
   },
   "variables": {
+    "Location": "[resourceGroup().location]",
     "packageFileUri": "[uri(deployment().properties.templateLink.uri, 'build/ManagedApplication.zip')]"
   },
   "resources": [
     {
       "apiVersion": "2017-09-01",
       "name": "[parameters('name')]",
-      "location": "[parameters('location')]",
+      "location": "[variables('Location')]",
       "type": "Microsoft.Solutions/applicationDefinitions",
       "properties": {
         "lockLevel": "[parameters('lockLevel')]",
