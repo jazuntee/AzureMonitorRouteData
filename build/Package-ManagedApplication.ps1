@@ -4,7 +4,7 @@ param(
     [string] $StagingDirectory = ".\release\staging",
     #
     [Parameter(Mandatory=$false)]
-    [string] $PackagePath = ".\release\AzureMonitorRouteData.zip"
+    [string] $PackagePath = ".\ManagedApplication.zip"
 )
 
 ## Convert relative paths to absolute
