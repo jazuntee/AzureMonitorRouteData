@@ -65,6 +65,28 @@
                         }
                     },
                     {
+                        "name": "EventHubNames",
+                        "type": "Microsoft.Common.TextBox",
+                        "label": "Event Hub Names",
+                        "toolTip": "Specify an array of event hub names",
+                        "constraints": {
+                            "required": false,
+                            "regex": "^\\[\"(?:[^\"]*?(?:\",\")?)*\"\\]$",
+                            "validationMessage": "Array should be in the format [\"element1\",\"element2\",\"elementn\"]."
+                        }
+                    },
+                    {
+                        "name": "EventHubConsumerGroups",
+                        "type": "Microsoft.Common.TextBox",
+                        "label": "Event Hub Consumer Groups",
+                        "toolTip": "Specify an array of event hub consumer groups",
+                        "constraints": {
+                            "required": false,
+                            "regex": "^\\[\"(?:[^\"]*?(?:\",\")?)*\"\\]$",
+                            "validationMessage": "Array should be in the format [\"element1\",\"element2\",\"elementn\"]."
+                        }
+                    },
+                    {
                         "name": "LogAnalyticsWorkspaceName",
                         "type": "Microsoft.Common.TextBox",
                         "label": "Log Analytics Workspace Name",
