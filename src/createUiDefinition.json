@@ -69,10 +69,9 @@
                         "type": "Microsoft.Common.TextBox",
                         "label": "Event Hub Names",
                         "toolTip": "Specify an array of event hub names",
-                        "defaultValue": "[\"insights-operational-logs\",\"insights-logs-diagnostics\",\"insights-telemetry-lad\",\"insights-metrics-pt1m\",\"insights-telemetry-wad\",\"insights-logs-auditlogs\",\"insights-logs-signinlogs\",\"insights-logs-alert\"]",
                         "constraints": {
                             "required": false,
-                            "regex": "^asdf$",
+                            "regex": "^(?:\\[(?:\"[^\"]*\"(?:,\"[^\"]*\")*)?\\])?$",
                             "validationMessage": "Array should be in the format [\"element1\",\"element2\",\"elementn\"]."
                         }
                     },
@@ -83,7 +82,7 @@
                         "toolTip": "Specify an array of event hub consumer groups",
                         "constraints": {
                             "required": false,
-                            "regex": "^asdf$",
+                            "regex": "^(?:\\[(?:\"[^\"]*\"(?:,\"[^\"]*\")*)?\\])?$",
                             "validationMessage": "Array should be in the format [\"element1\",\"element2\",\"elementn\"]."
                         }
                     },
