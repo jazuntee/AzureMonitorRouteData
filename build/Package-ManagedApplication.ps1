@@ -26,6 +26,7 @@ if (![System.IO.Path]::IsPathRooted($PackagePath)) {
 $StagingFiles = Copy-Item $SourceFiles -Destination $StagingDirectory -Force -PassThru -ErrorAction Stop
 
 ## Zip Files in Staging Directory
+Remove-Item $PackagePath -Force -ErrorAction SilentlyContinue
 Add-Type -Assembly "System.IO.Compression.FileSystem"
 [System.IO.Compression.ZipFile]::CreateFromDirectory($StagingDirectory, $PackagePath)
 
