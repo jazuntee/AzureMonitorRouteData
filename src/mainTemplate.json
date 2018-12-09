@@ -151,7 +151,9 @@
         {
             "copy": {
                 "name": "copyAuthorizationRules",
-                "count": "[length(variables('EventHubAuthorizationRules'))]"
+                "count": "[length(variables('EventHubAuthorizationRules'))]",
+                "mode": "Serial",
+                "batchSize": 1
             },
             "condition": "[not(or(empty(parameters('EventHubNamespace')),empty(variables('EventHubAuthorizationRules'))))]",
             "name": "[concat(variables('EventHubNamespace'), '/', variables('EventHubAuthorizationRules')[copyindex()].name)]",
@@ -167,7 +169,9 @@
         {
             "copy": {
                 "name": "copyEventHub",
-                "count": "[length(variables('EventHubNames'))]"
+                "count": "[length(variables('EventHubNames'))]",
+                "mode": "Serial",
+                "batchSize": 1
             },
             "condition": "[not(or(empty(parameters('EventHubNamespace')),empty(parameters('EventHubNames'))))]",
             "name": "[concat(variables('EventHubNamespace'), '/', variables('EventHubNames')[copyIndex()])]",
@@ -186,14 +190,17 @@
         {
             "copy": {
                 "name": "copyEventHubConsumerGroup",
-                "count": "[mul(length(variables('EventHubNames')),length(variables('EventHubConsumerGroupNames')))]"
+                "count": "[mul(length(variables('EventHubNames')),length(variables('EventHubConsumerGroupNames')))]",
+                "mode": "Serial",
+                "batchSize": 1
             },
             "condition": "[not(or(empty(parameters('EventHubNamespace')),or(empty(parameters('EventHubNames')),empty(parameters('EventHubConsumerGroupNames')))))]",
             "name": "[concat(variables('EventHubNamespace'), '/', variables('EventHubNames')[div(copyIndex(),length(variables('EventHubConsumerGroupNames')))], '/', variables('EventHubConsumerGroupNames')[mod(copyIndex(),length(variables('EventHubConsumerGroupNames')))])]",
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2017-04-01",
             "dependsOn": [
-                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('EventHubNamespace'), variables('EventHubNames')[div(copyIndex(),length(variables('EventHubConsumerGroupNames')))])]"
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('EventHubNamespace'), variables('EventHubNames')[div(copyIndex(),length(variables('EventHubConsumerGroupNames')))])]",
+                "copyEventHub"
             ]
         },
         {
