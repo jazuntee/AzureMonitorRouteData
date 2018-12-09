@@ -71,7 +71,9 @@
                         "toolTip": "Specify an array of event hub names",
                         "defaultValue": "qwer3",
                         "constraints": {
-                            "required": false
+                            "required": false,
+                            "regex": "^(?:\\[(?:\"[^\"]*\"(?:,\"[^\"]*\")*)?\\])?$",
+                            "validationMessage": "Array should be in the format [\"element1\",\"element2\",\"elementn\"]."
                         }
                     },
                     {
