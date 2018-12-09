@@ -90,7 +90,7 @@
                         "type": "Microsoft.Common.TextBox",
                         "label": "Log Analytics Workspace Name",
                         "toolTip": "Send to Log Analytics",
-                        "defaultValue": "update3",
+                        "defaultValue": "update4",
                         "constraints": {
                             "required": false,
                             "regex": "^[a-zA-Z0-9][a-zA-Z0-9-]{2,61}[a-zA-Z0-9]$",
@@ -117,7 +117,8 @@
             "EventHubNamespace": "[steps('AzureMonitor').EventHubNamespace]",
             "EventHubNames": "[parse(coalesce(steps('AzureMonitor').EventHubNames,'[]'))]",
             "EventHubConsumerGroupNames": "[parse(coalesce(steps('AzureMonitor').EventHubConsumerGroupNames,'[]'))]",
-            "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalyticsWorkspaceName]"
+            "LogAnalyticsWorkspaceName": "[steps('AzureMonitor').LogAnalyticsWorkspaceName]",
+            "LogAnalyticsDataRetentionInDays": "[parse(steps('AzureMonitor').LogAnalyticsDataRetentionInDays)]"
         }
     }
 }
