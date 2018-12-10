@@ -25,7 +25,7 @@ Clicking on the button below, will deploy the mainTemplate.json definition to a 
 $rgname = "<yourRgName>"
 $location = "<rgLocation>"
 $authorization = "<userOrGroupId>:<RBACRoleDefinitionId>"
-$uri = "https://raw.githubusercontent.com/Azure/azure-managedapp-samples/master/samples/201-managed-storage-account/managedstorage.zip"
+$uri = "https://raw.githubusercontent.com/jasoth/AzureMonitorRouteData/master/build/ManagedApplication.zip"
 
 New-AzureRmManagedApplicationDefinition -Name "ManagedStorage" `
                                         -ResourceGroupName $rgname `
@@ -51,5 +51,5 @@ az managedapp definition create \
   --display-name "Managed Storage Account" \
   --description "Managed Azure Storage Account" \
   --authorizations "<userOrGroupId>:<RBACRoleDefinitionId>" \
-  --package-file-uri "https://raw.githubusercontent.com/Azure/azure-managedapp-samples/master/samples/201-managed-storage-account/managedstorage.zip"
+  --package-file-uri "https://raw.githubusercontent.com/jasoth/AzureMonitorRouteData/master/build/ManagedApplication.zip"
 ````
