@@ -2,10 +2,11 @@
 
 >Note: Managed Applications can be published to a [Service Catalog](https://docs.microsoft.com/en-us/azure/managed-applications/publish-service-catalog-app) or the [Azure Marketplace](https://docs.microsoft.com/en-us/azure/managed-applications/publish-marketplace-app).
 
+
 ## Deploy to Service Catalog
 
 ### Deploy using Azure Portal
-    Click "Deploy to Azure" to deploy the Managed Application Definition to a Resource Group in your Azure Subscription.
+Click "Deploy to Azure" to deploy the Managed Application Definition to a Resource Group in your Azure Subscription.
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjasoth%2FAzureMonitorRouteData%2Fmaster%2Fazuredeploy.json) [![Visualize Deployment](http://armviz.io/visualizebutton.png)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fjasoth%2FAzureMonitorRouteData%2Fmaster%2Fazuredeploy.json) [See Deployment UI](https://portal.azure.com/#blade/Microsoft_Azure_Compute/CreateMultiVmWizardBlade/internal_bladeCallId/anything/internal_bladeCallerParams/{"initialData":{},"providerConfig":{"createUiDefinition":"https%3A%2F%2Fraw.githubusercontent.com%2Fjasoth%2FAzureMonitorRouteData%2Fmaster%2Fsrc%2FcreateUiDefinition.json"}})
 
