@@ -76,7 +76,7 @@ New-AzureRmManagedApplicationDefinition -Name "<ManagedAppName>" `
 
 Modify the snippet below to deploy Managed Application definition to a Resource Group in your Azure subscription
 
-````bash
+````posh
 az managedapp definition create \
   --name "ManagedStorage" \
   --location <rgLocation> \
