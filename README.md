@@ -55,7 +55,7 @@ Clicking on the button below, will deploy the mainTemplate.json definition to a 
 
 ### Deploy using PowerShell
 
-````powershell
+```powershell
 $rgname = "<yourRgName>"
 $location = "<rgLocation>"
 $authorization = "<userOrGroupId>:<RBACRoleDefinitionId>"
@@ -70,13 +70,13 @@ New-AzureRmManagedApplicationDefinition -Name "<ManagedAppName>" `
                                         -PackageFileUri "https://raw.githubusercontent.com/jasoth/AzureMonitorRouteData/master/build/ManagedApplication.zip" `
                                         -Authorization "<userOrGroupId>:<RBACRoleDefinitionId>" `
                                         -Verbose
-````
+```
 
-### Deploy using AzureCLI
+### Deploy using Azure CLI
 
 Modify the snippet below to deploy Managed Application definition to a Resource Group in your Azure subscription
 
-````batch
+```
 az managedapp definition create \
   --name "ManagedStorage" \
   --location <rgLocation> \
@@ -86,4 +86,4 @@ az managedapp definition create \
   --description "Managed Azure Storage Account" \
   --authorizations "<userOrGroupId>:<RBACRoleDefinitionId>" \
   --package-file-uri "https://raw.githubusercontent.com/jasoth/AzureMonitorRouteData/master/build/ManagedApplication.zip"
-````
+```
