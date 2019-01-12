@@ -3,7 +3,7 @@
 >Note: Managed Applications can be published to a [Service Catalog](https://docs.microsoft.com/en-us/azure/managed-applications/publish-service-catalog-app) or the [Azure Marketplace](https://docs.microsoft.com/en-us/azure/managed-applications/publish-marketplace-app).
 
 
-## Deploy to Service Catalog
+## Deploy Managed Application to Service Catalog
 
 ### Deploy using Azure Portal
 Click "Deploy to Azure" to deploy the Managed Application Definition to a Resource Group in your Azure Subscription.
