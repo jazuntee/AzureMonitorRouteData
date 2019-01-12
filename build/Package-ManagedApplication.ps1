@@ -1,8 +1,8 @@
 param(
-    #
+    # Specify temporary directory to stage files for packaging.
     [Parameter(Mandatory=$false)]
     [string] $StagingDirectory = ".\release\staging",
-    #
+    # Specify destination path for package.
     [Parameter(Mandatory=$false)]
     [string] $PackagePath = ".\ManagedApplication.zip"
 )
