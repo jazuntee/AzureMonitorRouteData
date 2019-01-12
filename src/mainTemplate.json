@@ -67,7 +67,7 @@
                 "description": "Number of Days to Retain Data in Log Analytics Workspace for Azure Monitor Data."
             },
             "type": "int",
-            "defaultValue": 365,
+            "defaultValue": 90,
             "minValue": 30,
             "maxValue": 730
         }
