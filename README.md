@@ -10,7 +10,7 @@
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjasoth%2FAzureMonitorRouteData%2Fmaster%2Fazuredeploy.json) [![Visualize Deployment](http://armviz.io/visualizebutton.png)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fjasoth%2FAzureMonitorRouteData%2Fmaster%2Fazuredeploy.json) [See Deployment UI](https://portal.azure.com/#blade/Microsoft_Azure_Compute/CreateMultiVmWizardBlade/internal_bladeCallId/anything/internal_bladeCallerParams/{"initialData":{},"providerConfig":{"createUiDefinition":"https%3A%2F%2Fraw.githubusercontent.com%2Fjasoth%2FAzureMonitorRouteData%2Fmaster%2Fsrc%2FcreateUiDefinition.json"}})
 
 ### Deploy using PowerShell
-    Replace <variables> and execute command(s) to deploy the Managed Application Definition to a Resource Group in your Azure Subscription.
+Replace `<variables>` and execute command(s) to deploy the Managed Application Definition to a Resource Group in your Azure Subscription.
 
 ```powershell
 New-AzureRmManagedApplicationDefinition -Name "<ManagedAppName>" `
@@ -25,7 +25,7 @@ New-AzureRmManagedApplicationDefinition -Name "<ManagedAppName>" `
 ```
 
 ### Deploy using Azure CLI
-    Replace <variables> and execute command(s) to deploy the Managed Application Definition to a Resource Group in your Azure Subscription.
+Replace `<variables>` and execute command(s) to deploy the Managed Application Definition to a Resource Group in your Azure Subscription.
 
 ```
 az managedapp definition create \
@@ -43,12 +43,12 @@ az managedapp definition create \
 ## Deploy Content (mainTemplate.json) without Managed Application
 
 ### Deploy using Azure Portal
-    Click "Deploy to Azure" to deploy content (mainTemplate.json) without Managed Application to a Resource Group in your Azure subscription.
+Click "Deploy to Azure" to deploy content (mainTemplate.json) without Managed Application to a Resource Group in your Azure subscription.
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjasoth%2FAzureMonitorRouteData%2Fmaster%2Fsrc%2FmainTemplate.json) [![Visualize Deployment](http://armviz.io/visualizebutton.png)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fjasoth%2FAzureMonitorRouteData%2Fmaster%2Fsrc%2FmainTemplate.json)
 
 ### Deploy using PowerShell
-    Replace <variables> and execute command(s) to deploy content (mainTemplate.json) without Managed Application to a Resource Group in your Azure subscription.
+Replace `<variables>` and execute command(s) to deploy content (mainTemplate.json) without Managed Application to a Resource Group in your Azure subscription.
 
 ```powershell
 New-AzureRmResourceGroup -Name "<ResourceGroupName>" -Location "<Location>"
@@ -58,7 +58,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "<ResourceGroupName>" `
 ```
 
 ### Deploy using Azure CLI
-    Replace <variables> and execute command(s) to deploy content (mainTemplate.json) without Managed Application to a Resource Group in your Azure subscription.
+Replace `<variables>` and execute command(s) to deploy content (mainTemplate.json) without Managed Application to a Resource Group in your Azure subscription.
 
 ```
 az group create --name "<ResourceGroupName>" --location "<Location>"
