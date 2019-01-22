@@ -121,7 +121,7 @@
             "sku": {
                 "name": "[parameters('StorageAcctType')]"
             },
-            "kind": "BlobStorage",
+            "kind": "StorageV2",
             "properties": {
                 "supportsHttpsTrafficOnly": true,
                 "encryption": {
