@@ -11,7 +11,8 @@
         "EventHubConsumerGroupNames": {
             "value": [
                 "splunk",
-                "qradar"
+                "qradar",
+                "sumo-logic"
             ]
         },
         "LogAnalyticsWorkspaceName": {
